@@ -35,7 +35,6 @@ Database yang digunakan adalah MySQL dan pengelolaan dependensi dilakukan melalu
 * ✅ Bayar Pesanan
 * ✅ Lihat Semua Pesanan dan Menu
 
----
 
 ## Teknologi yang Digunakan
 
@@ -45,7 +44,6 @@ Database yang digunakan adalah MySQL dan pengelolaan dependensi dilakukan melalu
 * MySQL (via Laragon)
 * Maven (pom.xml)
 
----
 
 ## Role Pengguna
 

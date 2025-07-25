@@ -112,6 +112,10 @@ public class Menu {
 }
 
 ```
+
+---
+
+```
 // Makanan.java (Kelas Anak / Subclass)
 package com.mycompany.kasirrestoran;
 

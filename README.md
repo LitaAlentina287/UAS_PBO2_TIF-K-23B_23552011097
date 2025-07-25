@@ -5,8 +5,6 @@
 
 ---
 
-## 📄 Profil
-
 ## 📄 Profil  
 **Nama**: Lita Alentina  
 **NIM**: 23552011097  

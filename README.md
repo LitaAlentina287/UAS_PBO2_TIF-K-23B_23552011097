@@ -1,30 +1,30 @@
 # Final Proyek Pemrograman Berorientasi Obyek 2
 
-**Mata Kuliah**: Pemrograman Berorientasi Obyek 2
-**Dosen Pengampu**: Muhammad Ikhwan Fathulloh
+- **Mata Kuliah**: Pemrograman Berorientasi Obyek 2
+- **Dosen Pengampu**: Muhammad Ikhwan Fathulloh
 
 ---
 
-## 📄 Profil  
-**Nama**: Lita Alentina  
-**NIM**: 23552011097  
-**Studi** Kasus: Kasir Restoran
+## Profil  
+- **Nama**: Lita Alentina  
+- **NIM**: 23552011097  
+- **Studi** Kasus: Kasir Restoran
 
 ---
 
-## 📛 Judul Studi Kasus
+## Judul Studi Kasus
 
 Aplikasi Kasir Restoran Berbasis JavaFX
 
 ---
 
-## 📋 Penjelasan Studi Kasus
+## Penjelasan Studi Kasus
 
 Aplikasi ini merupakan sistem kasir restoran berbasis JavaFX yang memungkinkan Kasir untuk mengelola menu makanan dan minuman serta melakukan pengelolaan pesanan pelanggan. Semua tampilan dirancang langsung menggunakan kode Java, dengan penambahan efek visual seperti gradasi warna dan drop shadow.
 
 Database yang digunakan adalah MySQL dan pengelolaan dependensi dilakukan melalui Maven (`pom.xml`).
 
-## 🔹 Fitur Aplikasi
+## Fitur Aplikasi
 
 * ✅ Login Admin dan User
 * ✅ Register User
@@ -37,7 +37,7 @@ Database yang digunakan adalah MySQL dan pengelolaan dependensi dilakukan melalu
 
 ---
 
-## 🛠️ Teknologi yang Digunakan
+## Teknologi yang Digunakan
 
 * JavaFX (Tanpa FXML & CSS)
 * Java JDK 21
@@ -47,22 +47,22 @@ Database yang digunakan adalah MySQL dan pengelolaan dependensi dilakukan melalu
 
 ---
 
-## 🔹 Role Pengguna
+## Role Pengguna
 
-### 🔐 Admin
+### Admin
 
 * Username: `admin`
 * Password: `123`
 * Dapat menambah, mengubah, dan menghapus menu serta mengelola pesanan.
 
-### 👤 User
+### User
 
 * Melakukan pendaftaran melalui fitur Register
 * Dapat melakukan login dan melihat daftar menu serta status ketersediaannya.
 
 ---
 
-## 🔑 Penjelasan 4 Pilar OOP dalam Studi Kasus
+## Penjelasan 4 Pilar OOP dalam Studi Kasus
 
 1. **Inheritance (Pewarisan)**
    Kelas-kelas dalam aplikasi seperti `Pesanan`, `DetailPesanan`, dan `User` mewarisi atribut umum dan memperluas fungsionalitasnya untuk digunakan dalam berbagai fitur.
@@ -79,7 +79,7 @@ Database yang digunakan adalah MySQL dan pengelolaan dependensi dilakukan melalu
 ---
 
 
-## 📹 Demo Proyek
+## Demo Proyek
 
 * **GitHub**: \[Link repositori GitHub Anda]
 * **YouTube**: \[Link video demo YouTube Anda]

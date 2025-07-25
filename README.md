@@ -23,7 +23,7 @@ Aplikasi Kasir Restoran Berbasis JavaFX
 Aplikasi ini merupakan sistem kasir restoran berbasis JavaFX yang memungkinkan Kasir untuk mengelola menu makanan dan minuman serta melakukan pengelolaan pesanan pelanggan. Semua tampilan dirancang langsung menggunakan kode Java, dengan penambahan efek visual seperti gradasi warna dan drop shadow.
 Database yang digunakan adalah MySQL dan pengelolaan dependensi dilakukan melalui Maven (`pom.xml`).
 
-## Fitur Aplikasi
+**Fitur Aplikasi**
 
 * Login 
 * Register
@@ -37,7 +37,7 @@ Database yang digunakan adalah MySQL dan pengelolaan dependensi dilakukan melalu
 * Hapus Pesanan
 * Logout
 
-## Role Pengguna
+**Role Pengguna**
 
 Kasir (User)
 * Mendaftar lewat fitur Register
@@ -45,7 +45,7 @@ Kasir (User)
 * Mengelola seluruh aktivitas kasir
 
 
-## Teknologi yang Digunakan
+**Teknologi yang Digunakan**
 
 * JavaFX 
 * Java JDK 21

@@ -111,8 +111,6 @@ public class Menu {
     public void setJenis(String jenis) { this.jenis = jenis; }
 }
 
----
-
 ```
 // Makanan.java (Kelas Anak / Subclass)
 package com.mycompany.kasirrestoran;

@@ -3,20 +3,20 @@
 - **Mata Kuliah**: Pemrograman Berorientasi Obyek 2
 - **Dosen Pengampu**: Muhammad Ikhwan Fathulloh
 
----
+
 
 ## Profil  
 - **Nama**: Lita Alentina  
 - **NIM**: 23552011097  
 - **Studi** Kasus: Kasir Restoran
 
----
+
 
 ## Judul Studi Kasus
 
 Aplikasi Kasir Restoran Berbasis JavaFX
 
----
+
 
 ## Penjelasan Studi Kasus
 
@@ -26,21 +26,21 @@ Database yang digunakan adalah MySQL dan pengelolaan dependensi dilakukan melalu
 
 ## Fitur Aplikasi
 
-* ✅ Login Admin dan User
-* ✅ Register User
-* ✅ Tambah Menu (Admin)
-* ✅ Edit Menu (Admin)
-* ✅ Hapus Menu (Admin)
-* ✅ Buat Pesanan berdasarkan No Meja
-* ✅ Bayar Pesanan
-* ✅ Lihat Semua Pesanan dan Menu
+* Login Admin dan User
+* Register User
+* Tambah Menu (Admin)
+* Edit Menu (Admin)
+* Hapus Menu (Admin)
+* Buat Pesanan berdasarkan No Meja
+* Bayar Pesanan
+* Lihat Semua Pesanan dan Menu
 
 
 ## Teknologi yang Digunakan
 
-* JavaFX (Tanpa FXML & CSS)
+* JavaFX 
 * Java JDK 21
-* NetBeans 23
+* Apache NetBeans 23
 * MySQL (via Laragon)
 * Maven (pom.xml)
 

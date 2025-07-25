@@ -7,8 +7,8 @@
 
 ## 📄 Profil
 
-**Nama**: \[Lita Alentina]
-**NIM**: \[23552011097]
+**Nama**: \Lita Alentina
+**NIM**: \23552011097
 **Studi Kasus**: Kasir Restoran
 
 ---

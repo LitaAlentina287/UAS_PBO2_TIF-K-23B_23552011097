@@ -75,7 +75,7 @@ Inheritance adalah mekanisme di mana sebuah kelas anak (_subclass_) mewarisi pro
 
 **Contoh Kode:**
 
-```
+```java
 // Menu.java (Kelas Induk / Superclass)
 package com.mycompany.kasirrestoran;
 
@@ -110,12 +110,11 @@ public class Menu {
     public void setHarga(double harga) { this.harga = harga; }
     public void setJenis(String jenis) { this.jenis = jenis; }
 }
-
 ```
 
 ---
 
-```
+```java
 // Makanan.java (Kelas Anak / Subclass)
 package com.mycompany.kasirrestoran;
 
@@ -133,6 +132,7 @@ public class Makanan extends Menu {
         return "Makanan";
     }
 }
+```
 
 ---
 

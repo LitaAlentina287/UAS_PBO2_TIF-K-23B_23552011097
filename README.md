@@ -113,6 +113,27 @@ public class Menu {
 
 ---
 
+```
+// Makanan.java (Kelas Anak / Subclass)
+package com.mycompany.kasirrestoran;
+
+public class Makanan extends Menu {
+    public Makanan(int id, String nama, double harga) {
+        super(id, nama, harga, "Makanan"); // Memanggil konstruktor Menu dengan jenis "Makanan"
+    }
+
+    public Makanan(String nama, double harga) {
+        super(nama, harga, "Makanan"); // Memanggil konstruktor Menu dengan jenis "Makanan"
+    }
+
+    @Override // Opsional, hanya untuk memperjelas bahwa ini override perilaku dari superclass
+    public String getJenis() {
+        return "Makanan";
+    }
+}
+
+---
+
 ## 2️⃣ Encapsulation (Enkapsulasi)
 
 **🧩 Definisi:**

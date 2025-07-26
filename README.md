@@ -66,11 +66,11 @@ Konsep **Pemrograman Berorientasi Objek (OOP)** merupakan dasar penting dalam pe
 
 Inheritance adalah mekanisme di mana sebuah kelas (subclass atau kelas anak) dapat mewarisi properti dan metode dari kelas lain (superclass atau kelas induk). Ini memungkinkan untuk menggunakan kembali kode dan membangun hierarki "adalah-sebuah" (is-a) antara kelas-kelas.
 
-**Penjelasan dalam Studi Kasus:**
+**Penjelasan dalam Studi Kasus :**
 
-Dalam aplikasi kasir restoran ini, terdapat kelas `Menu` sebagai kelas induk `(superclass)`. Kemudian, kelas `Makanan` dan `Minuman` dibuat sebagai kelas anak `(subclass)` yang mewarisi dari `Menu`. Ini berarti `Makanan` "adalah sebuah" Menu, dan `Minuman` juga "adalah sebuah" `Menu`. Keduanya berbagi properti dan perilaku umum dari Menu (seperti ID, nama, harga), sambil memiliki karakteristik spesifiknya sendiri (jenis "Makanan" atau "Minuman").
+Dalam aplikasi kasir restoran ini, terdapat kelas `Menu` sebagai kelas induk (`superclass`). Kemudian, kelas `Makanan` dan `Minuman` dibuat sebagai kelas anak (`subclass`) yang mewarisi dari `Menu`. Ini berarti `Makanan` "adalah sebuah" Menu, dan `Minuman` juga "adalah sebuah" `Menu`. Keduanya berbagi properti dan perilaku umum dari Menu (seperti ID, nama, harga), sambil memiliki karakteristik spesifiknya sendiri (jenis "Makanan" atau "Minuman").
 
-**Penerapan dalam Aplikasi :**
+**Contoh Penerapan dalam Aplikasi :**
 
 ```Java
 // Menu.java (Kelas Induk / Superclass)
@@ -182,13 +182,13 @@ public class Minuman extends Menu {
 
 Encapsulation adalah konsep membungkus data (variabel) dan metode (fungsi) yang beroperasi pada data tersebut menjadi satu unit (kelas). Ini juga melibatkan pembatasan akses langsung ke beberapa komponen objek, sehingga data internal dilindungi dari modifikasi eksternal yang tidak sah. Akses ke data biasanya diberikan melalui metode getter dan setter.
 
-Penjelasan dalam Studi Kasus:
-Informasi pemesanan, yang direpresentasikan dalam kelas Pesanan dan DetailPesanan, menerapkan enkapsulasi secara ketat. Variabel-variabel anggota seperti id, meja, totalHarga, status di kelas Pesanan, serta pesanan_id, menu_id, dan jumlah di DetailPesanan, dinyatakan sebagai private. Ini berarti variabel-variabel tersebut hanya bisa diakses dan dimodifikasi melalui metode public (getter dan setter) yang disediakan oleh kelas masing-masing. Enkapsulasi ini memastikan bahwa data pemesanan tetap konsisten dan aman dari akses atau perubahan yang tidak terkontrol.
+**Penjelasan dalam Studi Kasus:**
 
-Kode Relevan:
+Informasi pemesanan, yang direpresentasikan dalam kelas `Pesanan` dan `DetailPesanan`, menerapkan enkapsulasi secara ketat. Variabel-variabel anggota seperti `id`, `meja`, `totalHarga`, `status` di kelas `Pesanan`, `serta pesanan_id`, `menu_id`, dan `jumlah` di `DetailPesanan`, dinyatakan sebagai `private`. Ini berarti variabel-variabel tersebut hanya bisa diakses dan dimodifikasi melalui metode `public` (getter dan setter) yang disediakan oleh kelas masing-masing. Enkapsulasi ini memastikan bahwa data pemesanan tetap konsisten dan aman dari akses atau perubahan yang tidak terkontrol.
 
-Java
+**Contoh Penerapan dalam Aplikasi :**
 
+```Java
 // Pesanan.java (contoh enkapsulasi)
 package com.mycompany.kasirrestoran;
 
@@ -220,16 +220,22 @@ public class Pesanan {
     public void setStatus(String status) { this.status = status; }
     public void setUsername(String username) { this.username = username; }
 }
-3. Polymorphism (Polimorfisme)
+```
+
+---
+
+
+### 3. Polymorphism (Polimorfisme)
+
 Polymorphism berarti "banyak bentuk". Dalam OOP, ini memungkinkan objek dari kelas yang berbeda untuk diperlakukan sebagai objek dari kelas umum mereka. Ini dicapai melalui method overriding (implementasi metode di subclass yang sudah ada di superclass) atau method overloading (memiliki beberapa metode dengan nama yang sama tetapi parameter yang berbeda).
 
-Penjelasan dalam Studi Kasus:
-Polimorfisme diilustrasikan dengan baik melalui metode Menu::hitungHarga(). Meskipun semua Makanan dan Minuman adalah tipe Menu, masing-masing dapat memiliki cara perhitungan harga yang berbeda atau tambahan. Dengan mendeklarasikan metode hitungHarga() di kelas Menu (sebagai superclass) dan meng-override-nya di kelas Makanan dan Minuman (sebagai subclass), kode dapat memanggil hitungHarga() pada objek Menu secara umum, dan sistem akan secara otomatis mengeksekusi implementasi yang benar (spesifik untuk Makanan atau Minuman) saat runtime. Ini memungkinkan fleksibilitas dalam perhitungan harga tanpa perlu mengetahui jenis spesifik objek Menu saat pemanggilan metode.
+**Penjelasan dalam Studi Kasus:**
 
-Kode Relevan:
+Polimorfisme diilustrasikan dengan baik melalui metode `Menu::hitungHarga()`. Meskipun semua `Makanan` dan `Minuman` adalah tipe `Menu`, masing-masing dapat memiliki cara perhitungan harga yang berbeda atau tambahan. Dengan mendeklarasikan metode `hitungHarga()` di kelas `Menu` (sebagai superclass) dan meng-override-nya di kelas `Makanan` dan `Minuman` (sebagai subclass), kode dapat memanggil `hitungHarga()` pada objek `Menu` secara umum, dan sistem akan secara otomatis mengeksekusi implementasi yang benar (spesifik untuk `Makanan` atau `Minuman`) saat runtime. Ini memungkinkan fleksibilitas dalam perhitungan harga tanpa perlu mengetahui jenis spesifik objek `Menu` saat pemanggilan metode.
 
-Java
+**Contoh Penerapan dalam Aplikasi :**
 
+```Java
 // MenuService.java (contoh penggunaan polymorphism pada hitungHarga)
 package com.mycompany.kasirrestoran;
 
@@ -289,21 +295,29 @@ public class MenuService {
 
     // Metode lain...
 }
-Saat hitungTotalHargaPesanan dipanggil, dp.getMenu().hitungHarga() akan memicu metode hitungHarga() yang tepat, baik dari kelas Makanan atau Minuman, berdasarkan jenis objek Menu yang sebenarnya.
+```
 
-4. Abstraction (Abstraksi)
-Abstraction adalah konsep menyembunyikan detail implementasi yang kompleks dari pengguna dan hanya menampilkan fungsionalitas esensial. Ini berfokus pada "apa yang dilakukan" daripada "bagaimana itu dilakukan". Abstraksi dapat dicapai melalui kelas abstrak dan antarmuka (interfaces).
+---
 
-Penjelasan dalam Studi Kasus:
-Konsep abstraksi diterapkan melalui kelas ItemMakanan. Diasumsikan ItemMakanan akan menjadi kelas abstract yang mendefinisikan perilaku umum untuk item-item yang dapat dimakan, seperti getNama(), getHarga(), tetapi mungkin mewajibkan subclass untuk menyediakan implementasi spesifik untuk metode seperti siapkan(), yang bisa berbeda antara makanan utama dan makanan penutup.
+Saat `hitungTotalHargaPesanan` dipanggil, `dp.getMenu().hitungHarga()` akan memicu metode `hitungHarga()` yang tepat, baik dari kelas `Makanan` atau `Minuman`, berdasarkan jenis objek `Menu` yang sebenarnya.
 
-Selain itu, Service Classes seperti MenuService, PesananService, dan UserService adalah contoh lain dari abstraksi. Ketika BuatPesananPane ingin menyimpan pesanan, kelas tersebut hanya memanggil pesananService.tambahPesanan(). BuatPesananPane tidak perlu mengetahui detail rumit bagaimana PesananService membuka koneksi database, membuat prepared statement, menjalankan transaksi untuk menyimpan pesanan dan detailnya. Detail-detail implementasi database ini di-"abstrak" dari lapisan UI, sehingga UI hanya perlu berinteraksi dengan API yang sederhana dan jelas.
+---
 
-Contoh Struktur Kelas Abstrak (Hipotesis untuk ItemMakanan):
-(Catatan: Kelas ItemMakanan tidak ada dalam kode yang diberikan, ini adalah contoh hipotesis berdasarkan prompt)
+### 4. Abstraction (Abstraksi)
 
-Java
+Abstraction adalah konsep menyembunyikan detail implementasi yang kompleks dari pengguna dan hanya menampilkan fungsionalitas esensial. Ini berfokus pada "apa yang dilakukan" daripada "bagaimana itu dilakukan". Abstraksi dapat dicapai melalui kelas abstrak dan antarmuka (`interfaces`).
 
+**Penjelasan dalam Studi Kasus :**
+
+Konsep abstraksi diterapkan melalui kelas `ItemMakanan`. Diasumsikan `ItemMakanan` akan menjadi kelas `abstract` yang mendefinisikan perilaku umum untuk item-item yang dapat dimakan, seperti `getNama()`, `getHarga()`, tetapi mungkin mewajibkan subclass untuk menyediakan implementasi spesifik untuk metode seperti `siapkan()`, yang bisa berbeda antara makanan utama dan makanan penutup.
+
+Selain itu, Service Classes seperti `MenuService`, `PesananService`, dan `UserService` adalah contoh lain dari abstraksi. Ketika `BuatPesananPane` ingin menyimpan pesanan, kelas tersebut hanya memanggil `pesananService.tambahPesanan()`. `BuatPesananPane` tidak perlu mengetahui detail rumit bagaimana `PesananService` membuka koneksi database, membuat prepared statement, menjalankan transaksi untuk menyimpan pesanan dan detailnya. Detail-detail implementasi database ini di-"abstrak" dari lapisan UI, sehingga UI hanya perlu berinteraksi dengan API yang sederhana dan jelas.
+
+**Contoh Struktur Kelas Abstrak (Hipotesis untuk `ItemMakanan`) :**
+
+(Catatan: Kelas `ItemMakanan` tidak ada dalam kode yang diberikan, ini adalah contoh hipotesis berdasarkan prompt)
+
+```Java
 // ItemMakanan.java (Contoh Kelas Abstract)
 package com.mycompany.kasirrestoran;
 
@@ -338,10 +352,11 @@ public class Makanan extends ItemMakanan {
     // ... lainnya
 }
 */
-Kode Relevan (Konsep Abstraksi melalui Service Layer):
+```
 
-Java
+**Kode Relevan (Konsep Abstraksi melalui Service Layer) :**
 
+```Java
 // BuatPesananPane.java (menggunakan abstraksi dari PesananService)
 package com.mycompany.kasirrestoran;
 
@@ -382,7 +397,9 @@ public class BuatPesananPane extends VBox {
 
     // ... (metode lain)
 }
-Dalam contoh di atas, BuatPesananPane hanya berinteraksi dengan PesananService melalui metode publiknya (tambahPesanan). Detail internal tentang bagaimana tambahPesanan berkomunikasi dengan database, menangani transaksi, atau mengelola koneksi database sepenuhnya tersembunyi dari BuatPesananPane. Ini adalah abstraksi yang sangat penting, membuat kode lebih bersih, lebih mudah dipahami, dan lebih mudah dipelihara.
+```
+
+Dalam contoh di atas, `BuatPesananPane` hanya berinteraksi dengan `PesananService` melalui metode publiknya (`tambahPesanan`). Detail internal tentang bagaimana `tambahPesanan` berkomunikasi dengan database, menangani transaksi, atau mengelola koneksi database sepenuhnya tersembunyi dari `BuatPesananPane`. Ini adalah abstraksi yang sangat penting, membuat kode lebih bersih, lebih mudah dipahami, dan lebih mudah dipelihara.
 
 
 

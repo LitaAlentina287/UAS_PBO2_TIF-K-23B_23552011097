@@ -408,7 +408,7 @@ Dalam contoh di atas, `BuatPesananPane` hanya berinteraksi dengan `PesananServic
 
 ## Demo Proyek
 
-* **GitHub**: \[Link repositori GitHub Anda]
+* **GitHub**: \[https://github.com/LitaAlentina287/UAS_PBO2_TIF-K-23B_23552011097.git]
 * **YouTube**: \[https://youtu.be/RfRL2ekUCoo?si=lGS_QjA2VAbmGWUV]
 
 ---

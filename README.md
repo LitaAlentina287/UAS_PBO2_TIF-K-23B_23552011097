@@ -68,9 +68,9 @@ Inheritance adalah mekanisme di mana sebuah kelas (subclass atau kelas anak) dap
 
 **Penjelasan dalam Studi Kasus:**
 
-Dalam aplikasi kasir restoran ini, terdapat kelas `Menu` sebagai kelas induk (superclass). Kemudian, kelas Makanan dan Minuman dibuat sebagai kelas anak (subclass) yang mewarisi dari Menu. Ini berarti Makanan "adalah sebuah" Menu, dan Minuman juga "adalah sebuah" Menu. Keduanya berbagi properti dan perilaku umum dari Menu (seperti ID, nama, harga), sambil memiliki karakteristik spesifiknya sendiri (jenis "Makanan" atau "Minuman").
+Dalam aplikasi kasir restoran ini, terdapat kelas `Menu` sebagai kelas induk `(superclass)`. Kemudian, kelas `Makanan` dan `Minuman` dibuat sebagai kelas anak `(subclass)` yang mewarisi dari `Menu`. Ini berarti `Makanan` "adalah sebuah" Menu, dan `Minuman` juga "adalah sebuah" `Menu`. Keduanya berbagi properti dan perilaku umum dari Menu (seperti ID, nama, harga), sambil memiliki karakteristik spesifiknya sendiri (jenis "Makanan" atau "Minuman").
 
-Kode Relevan:
+**Penerapan dalam Aplikasi :**
 
 Java
 

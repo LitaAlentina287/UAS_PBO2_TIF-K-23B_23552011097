@@ -72,8 +72,7 @@ Dalam aplikasi kasir restoran ini, terdapat kelas `Menu` sebagai kelas induk `(s
 
 **Penerapan dalam Aplikasi :**
 
-Java
-
+```Java
 // Menu.java (Kelas Induk / Superclass)
 package com.mycompany.kasirrestoran;
 
@@ -113,8 +112,12 @@ public class Menu {
         return this.harga;
     }
 }
-Java
+```
 
+---
+
+
+```Java
 // Makanan.java (Kelas Anak / Subclass)
 package com.mycompany.kasirrestoran;
 

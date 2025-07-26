@@ -62,9 +62,11 @@ Konsep **Pemrograman Berorientasi Objek (OOP)** merupakan dasar penting dalam pe
 ---
 
 **1. Inheritance (Pewarisan)**
+
 Inheritance adalah mekanisme di mana sebuah kelas (subclass atau kelas anak) dapat mewarisi properti dan metode dari kelas lain (superclass atau kelas induk). Ini memungkinkan untuk menggunakan kembali kode dan membangun hierarki "adalah-sebuah" (is-a) antara kelas-kelas.
 
 **Penjelasan dalam Studi Kasus:**
+
 Dalam aplikasi kasir restoran ini, terdapat kelas `Menu` sebagai kelas induk (superclass). Kemudian, kelas Makanan dan Minuman dibuat sebagai kelas anak (subclass) yang mewarisi dari Menu. Ini berarti Makanan "adalah sebuah" Menu, dan Minuman juga "adalah sebuah" Menu. Keduanya berbagi properti dan perilaku umum dari Menu (seperti ID, nama, harga), sambil memiliki karakteristik spesifiknya sendiri (jenis "Makanan" atau "Minuman").
 
 Kode Relevan:

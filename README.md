@@ -142,8 +142,12 @@ public class Makanan extends Menu {
         return super.hitungHarga();
     }
 }
-Java
+```
 
+---
+
+
+```Java
 // Minuman.java (Kelas Anak / Subclass)
 package com.mycompany.kasirrestoran;
 
@@ -168,6 +172,11 @@ public class Minuman extends Menu {
         return super.hitungHarga() * 1.10;
     }
 }
+```
+
+---
+
+
 2. Encapsulation (Enkapsulasi)
 Encapsulation adalah konsep membungkus data (variabel) dan metode (fungsi) yang beroperasi pada data tersebut menjadi satu unit (kelas). Ini juga melibatkan pembatasan akses langsung ke beberapa komponen objek, sehingga data internal dilindungi dari modifikasi eksternal yang tidak sah. Akses ke data biasanya diberikan melalui metode getter dan setter.
 

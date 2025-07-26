@@ -177,7 +177,9 @@ public class Minuman extends Menu {
 ---
 
 
-2. Encapsulation (Enkapsulasi)
+### 2. Encapsulation (Enkapsulasi)
+
+
 Encapsulation adalah konsep membungkus data (variabel) dan metode (fungsi) yang beroperasi pada data tersebut menjadi satu unit (kelas). Ini juga melibatkan pembatasan akses langsung ke beberapa komponen objek, sehingga data internal dilindungi dari modifikasi eksternal yang tidak sah. Akses ke data biasanya diberikan melalui metode getter dan setter.
 
 Penjelasan dalam Studi Kasus:

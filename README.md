@@ -61,21 +61,16 @@ Konsep **Pemrograman Berorientasi Objek (OOP)** merupakan dasar penting dalam pe
 
 ---
 
-## 1.Inheritance (Pewarisan)
+**1. Inheritance (Pewarisan)**
+Inheritance adalah mekanisme di mana sebuah kelas (subclass atau kelas anak) dapat mewarisi properti dan metode dari kelas lain (superclass atau kelas induk). Ini memungkinkan untuk menggunakan kembali kode dan membangun hierarki "adalah-sebuah" (is-a) antara kelas-kelas.
 
-**Definisi:**
+**Penjelasan dalam Studi Kasus:**
+Dalam aplikasi kasir restoran ini, terdapat kelas `Menu` sebagai kelas induk (superclass). Kemudian, kelas Makanan dan Minuman dibuat sebagai kelas anak (subclass) yang mewarisi dari Menu. Ini berarti Makanan "adalah sebuah" Menu, dan Minuman juga "adalah sebuah" Menu. Keduanya berbagi properti dan perilaku umum dari Menu (seperti ID, nama, harga), sambil memiliki karakteristik spesifiknya sendiri (jenis "Makanan" atau "Minuman").
 
-Inheritance adalah mekanisme di mana sebuah kelas anak (_subclass_) mewarisi properti dan metode dari kelas induk (_superclass_). Konsep ini memungkinkan kode dapat digunakan kembali dan membentuk hubungan "adalah sebuah" (_is-a_) antar objek.
+Kode Relevan:
 
-**Penerapan dalam Aplikasi:**
+Java
 
-- Kelas `Menu` bertindak sebagai **superclass**.
-- Kelas `Makanan` dan `Minuman` bertindak sebagai **subclass** dari `Menu`.
-- Artinya, baik `Makanan` maupun `Minuman` adalah bentuk dari `Menu`, dan mewarisi atribut seperti `id`, `nama`, `harga`, dan `jenis`.
-
-**Contoh Kode:**
-
-```java
 // Menu.java (Kelas Induk / Superclass)
 package com.mycompany.kasirrestoran;
 
@@ -109,12 +104,14 @@ public class Menu {
     public void setNama(String nama) { this.nama = nama; }
     public void setHarga(double harga) { this.harga = harga; }
     public void setJenis(String jenis) { this.jenis = jenis; }
+
+    // Metode ini akan menjadi kandidat polymorphism
+    public double hitungHarga() {
+        return this.harga;
+    }
 }
-```
+Java
 
----
-
-```java
 // Makanan.java (Kelas Anak / Subclass)
 package com.mycompany.kasirrestoran;
 
@@ -127,72 +124,248 @@ public class Makanan extends Menu {
         super(nama, harga, "Makanan"); // Memanggil konstruktor Menu dengan jenis "Makanan"
     }
 
-    @Override // Opsional, hanya untuk memperjelas bahwa ini override perilaku dari superclass
+    @Override
     public String getJenis() {
         return "Makanan";
     }
+
+    // Contoh override metode hitungHarga jika ada diskon khusus makanan, dll.
+    @Override
+    public double hitungHarga() {
+        // Misalnya, makanan tidak ada diskon khusus, jadi mengembalikan harga dasar
+        return super.hitungHarga();
+    }
 }
-```
+Java
 
----
+// Minuman.java (Kelas Anak / Subclass)
+package com.mycompany.kasirrestoran;
 
-## 2️⃣ Encapsulation (Enkapsulasi)
+public class Minuman extends Menu {
+    public Minuman(int id, String nama, double harga) {
+        super(id, nama, harga, "Minuman"); // Memanggil konstruktor Menu dengan jenis "Minuman"
+    }
 
-**🧩 Definisi:**
+    public Minuman(String nama, double harga) {
+        super(nama, harga, "Minuman"); // Memanggil konstruktor Menu dengan jenis "Minuman"
+    }
 
-Enkapsulasi adalah proses membungkus data dan metode dalam satu unit (kelas), serta membatasi akses langsung ke data tersebut untuk menjaga keamanannya. Akses biasanya diberikan melalui _getter_ dan _setter_.
+    @Override
+    public String getJenis() {
+        return "Minuman";
+    }
 
-**📌 Penerapan dalam Aplikasi:**
+    // Contoh override metode hitungHarga jika ada pajak khusus minuman, dll.
+    @Override
+    public double hitungHarga() {
+        // Misalnya, minuman dikenakan pajak 10%
+        return super.hitungHarga() * 1.10;
+    }
+}
+2. Encapsulation (Enkapsulasi)
+Encapsulation adalah konsep membungkus data (variabel) dan metode (fungsi) yang beroperasi pada data tersebut menjadi satu unit (kelas). Ini juga melibatkan pembatasan akses langsung ke beberapa komponen objek, sehingga data internal dilindungi dari modifikasi eksternal yang tidak sah. Akses ke data biasanya diberikan melalui metode getter dan setter.
 
-- Kelas seperti `Menu`, `Pesanan`, dan `DetailPesanan` menggunakan atribut `private`.
-- Akses terhadap data hanya bisa dilakukan melalui metode publik seperti `getNama()`, `setHarga()`, dll.
-- Mencegah data penting (seperti harga) dimodifikasi secara langsung dari luar kelas.
+Penjelasan dalam Studi Kasus:
+Informasi pemesanan, yang direpresentasikan dalam kelas Pesanan dan DetailPesanan, menerapkan enkapsulasi secara ketat. Variabel-variabel anggota seperti id, meja, totalHarga, status di kelas Pesanan, serta pesanan_id, menu_id, dan jumlah di DetailPesanan, dinyatakan sebagai private. Ini berarti variabel-variabel tersebut hanya bisa diakses dan dimodifikasi melalui metode public (getter dan setter) yang disediakan oleh kelas masing-masing. Enkapsulasi ini memastikan bahwa data pemesanan tetap konsisten dan aman dari akses atau perubahan yang tidak terkontrol.
 
-✅ **Contoh Kode:**
-Sudah tepat, tidak memerlukan perubahan.
+Kode Relevan:
 
----
+Java
 
-## 3️⃣ Polymorphism (Polimorfisme)
+// Pesanan.java (contoh enkapsulasi)
+package com.mycompany.kasirrestoran;
 
-**🧩 Definisi:**
+public class Pesanan {
+    private int id; // Private
+    private int meja; // Private
+    private String namaMakanan; // Private
+    private double totalHarga; // Private
+    private String status; // Private
+    private String username; // Private
 
-Polimorfisme memungkinkan objek dari subclass diperlakukan sebagai objek dari superclass-nya. Dengan begitu, kode menjadi lebih fleksibel dan dinamis tanpa harus tahu tipe spesifik setiap objek.
+    public Pesanan(int id, int meja, String namaMakanan, double totalHarga, String status) {
+        this.id = id;
+        this.meja = meja;
+        this.namaMakanan = namaMakanan;
+        this.totalHarga = totalHarga;
+        this.status = status;
+    }
 
-**📌 Penerapan dalam Aplikasi:**
+    // Getters
+    public int getId() { return id; }
+    public int getMeja() { return meja; }
+    public String getNamaMakanan() { return namaMakanan; }
+    public double getTotalHarga() { return totalHarga; }
+    public String getStatus() { return status; }
+    public String getUsername() { return username; }
 
-- Objek bertipe `Makanan` dan `Minuman` disimpan dalam list bertipe `Menu`.
-- Ketika memanggil `getJenis()` dari objek di dalam list, Java akan secara otomatis memilih implementasi metode dari subclass yang tepat.
+    // Setters
+    public void setStatus(String status) { this.status = status; }
+    public void setUsername(String username) { this.username = username; }
+}
+3. Polymorphism (Polimorfisme)
+Polymorphism berarti "banyak bentuk". Dalam OOP, ini memungkinkan objek dari kelas yang berbeda untuk diperlakukan sebagai objek dari kelas umum mereka. Ini dicapai melalui method overriding (implementasi metode di subclass yang sudah ada di superclass) atau method overloading (memiliki beberapa metode dengan nama yang sama tetapi parameter yang berbeda).
 
-✅ **Contoh Kode:**
-Sudah representatif dalam `MenuService.java`.
+Penjelasan dalam Studi Kasus:
+Polimorfisme diilustrasikan dengan baik melalui metode Menu::hitungHarga(). Meskipun semua Makanan dan Minuman adalah tipe Menu, masing-masing dapat memiliki cara perhitungan harga yang berbeda atau tambahan. Dengan mendeklarasikan metode hitungHarga() di kelas Menu (sebagai superclass) dan meng-override-nya di kelas Makanan dan Minuman (sebagai subclass), kode dapat memanggil hitungHarga() pada objek Menu secara umum, dan sistem akan secara otomatis mengeksekusi implementasi yang benar (spesifik untuk Makanan atau Minuman) saat runtime. Ini memungkinkan fleksibilitas dalam perhitungan harga tanpa perlu mengetahui jenis spesifik objek Menu saat pemanggilan metode.
 
----
+Kode Relevan:
 
-## 4️⃣ Abstraction (Abstraksi)
+Java
 
-**🧩 Definisi:**
+// MenuService.java (contoh penggunaan polymorphism pada hitungHarga)
+package com.mycompany.kasirrestoran;
 
-Abstraksi menyembunyikan detail implementasi yang kompleks dan hanya menampilkan antarmuka (interface) yang penting. Fokus utamanya adalah **apa yang dilakukan**, bukan **bagaimana melakukannya**.
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
-**📌 Penerapan dalam Aplikasi:**
+public class MenuService {
+    private final Connection conn;
 
-- Kelas `Menu` menyederhanakan interaksi pengguna dengan data makanan/minuman.
-- Service layer (`MenuService`, `PesananService`, `UserService`) menyembunyikan logika database dari UI.
-- Komponen UI hanya memanggil metode seperti `pesananService.tambahPesanan()` tanpa mengetahui detail SQL yang digunakan.
+    public MenuService() {
+        try {
+            conn = DatabaseConnection.getConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Gagal terhubung ke database.");
+        }
+    }
 
-✅ **Contoh Kode:**
-Sudah sesuai dan mencerminkan penerapan abstraksi melalui service layer.
+    public List<Menu> getAllMenu() {
+        List<Menu> daftarMenu = new ArrayList<>();
+        String sql = "SELECT * FROM menu";
 
----
+        try (Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
 
-📌 **Kesimpulan:**
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String nama = rs.getString("nama");
+                double harga = rs.getDouble("harga");
+                String jenis = rs.getString("jenis");
 
-Aplikasi kasir restoran ini menerapkan keempat prinsip utama OOP secara seimbang dan fungsional. Dengan struktur berbasis OOP, aplikasi menjadi:
+                Menu menu;
+                if ("Makanan".equalsIgnoreCase(jenis)) {
+                    menu = new Makanan(id, nama, harga);
+                } else {
+                    menu = new Minuman(id, nama, harga);
+                }
+                daftarMenu.add(menu);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return daftarMenu;
+    }
 
-- Lebih mudah dikembangkan dan diperluas.
-- Lebih terorganisir dan dapat dipelihara dalam jangka panjang.
-- Lebih aman dalam mengelola data penting dan alur logika.
+    // Contoh penggunaan metode hitungHarga secara polimorfik
+    public double hitungTotalHargaPesanan(List<DetailPesanan> detailPesananList) {
+        double total = 0;
+        for (DetailPesanan dp : detailPesananList) {
+            // Memanggil hitungHarga() pada objek Menu.
+            // Implementasi spesifik (Makanan atau Minuman) akan dipanggil secara otomatis.
+            total += dp.getMenu().hitungHarga() * dp.getJumlah();
+        }
+        return total;
+    }
+
+    // Metode lain...
+}
+Saat hitungTotalHargaPesanan dipanggil, dp.getMenu().hitungHarga() akan memicu metode hitungHarga() yang tepat, baik dari kelas Makanan atau Minuman, berdasarkan jenis objek Menu yang sebenarnya.
+
+4. Abstraction (Abstraksi)
+Abstraction adalah konsep menyembunyikan detail implementasi yang kompleks dari pengguna dan hanya menampilkan fungsionalitas esensial. Ini berfokus pada "apa yang dilakukan" daripada "bagaimana itu dilakukan". Abstraksi dapat dicapai melalui kelas abstrak dan antarmuka (interfaces).
+
+Penjelasan dalam Studi Kasus:
+Konsep abstraksi diterapkan melalui kelas ItemMakanan. Diasumsikan ItemMakanan akan menjadi kelas abstract yang mendefinisikan perilaku umum untuk item-item yang dapat dimakan, seperti getNama(), getHarga(), tetapi mungkin mewajibkan subclass untuk menyediakan implementasi spesifik untuk metode seperti siapkan(), yang bisa berbeda antara makanan utama dan makanan penutup.
+
+Selain itu, Service Classes seperti MenuService, PesananService, dan UserService adalah contoh lain dari abstraksi. Ketika BuatPesananPane ingin menyimpan pesanan, kelas tersebut hanya memanggil pesananService.tambahPesanan(). BuatPesananPane tidak perlu mengetahui detail rumit bagaimana PesananService membuka koneksi database, membuat prepared statement, menjalankan transaksi untuk menyimpan pesanan dan detailnya. Detail-detail implementasi database ini di-"abstrak" dari lapisan UI, sehingga UI hanya perlu berinteraksi dengan API yang sederhana dan jelas.
+
+Contoh Struktur Kelas Abstrak (Hipotesis untuk ItemMakanan):
+(Catatan: Kelas ItemMakanan tidak ada dalam kode yang diberikan, ini adalah contoh hipotesis berdasarkan prompt)
+
+Java
+
+// ItemMakanan.java (Contoh Kelas Abstract)
+package com.mycompany.kasirrestoran;
+
+// Misalkan ini adalah kelas abstrak yang diperluas oleh Makanan atau kategori makanan lainnya
+public abstract class ItemMakanan extends Menu {
+    public ItemMakanan(int id, String nama, double harga) {
+        super(id, nama, harga, "Makanan"); // Tetap set jenis dasar
+    }
+
+    public ItemMakanan(String nama, double harga) {
+        super(nama, harga, "Makanan");
+    }
+
+    // Metode abstrak yang harus diimplementasikan oleh subclass
+    // Contoh: setiap jenis makanan mungkin punya cara penyajian berbeda
+    public abstract String getInstruksiPenyajian();
+
+    // Metode konkret yang bisa diwarisi
+    public void cetakDeskripsi() {
+        System.out.println("Nama: " + getNama() + ", Harga: " + getHarga());
+    }
+}
+
+// Makanan.java akan memperluas ItemMakanan jika ItemMakanan adalah abstrak
+/*
+public class Makanan extends ItemMakanan {
+    // ... konstruktor
+    @Override
+    public String getInstruksiPenyajian() {
+        return "Disajikan hangat dengan saus khusus.";
+    }
+    // ... lainnya
+}
+*/
+Kode Relevan (Konsep Abstraksi melalui Service Layer):
+
+Java
+
+// BuatPesananPane.java (menggunakan abstraksi dari PesananService)
+package com.mycompany.kasirrestoran;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.*;
+
+import java.util.ArrayList;
+
+public class BuatPesananPane extends VBox {
+
+    // ... (variabel lain)
+    private final PesananService pesananService; // Ini adalah abstraksi!
+
+    public BuatPesananPane() {
+        // ... (inisialisasi UI)
+
+        pesananService = new PesananService(); // Inisialisasi service
+
+        // ... (kode lainnya)
+
+        Button simpanButton = new Button("Simpan Pesanan");
+        simpanButton.setOnAction(e -> {
+            // ... (validasi input)
+
+            int idPesanan = pesananService.tambahPesanan(pesanan, new ArrayList<>(pesananSementara));
+            // UI tidak perlu tahu detail SQL atau manajemen koneksi.
+            // Cukup panggil method 'tambahPesanan' dan PesananService yang mengurus implementasinya.
+
+            // ... (handling hasil simpan)
+        });
+
+        // ... (tambahan komponen ke VBox)
+    }
+
+    // ... (metode lain)
+}
+Dalam contoh di atas, BuatPesananPane hanya berinteraksi dengan PesananService melalui metode publiknya (tambahPesanan). Detail internal tentang bagaimana tambahPesanan berkomunikasi dengan database, menangani transaksi, atau mengelola koneksi database sepenuhnya tersembunyi dari BuatPesananPane. Ini adalah abstraksi yang sangat penting, membuat kode lebih bersih, lebih mudah dipahami, dan lebih mudah dipelihara.
 
 
 
